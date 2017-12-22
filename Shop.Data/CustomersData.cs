@@ -37,5 +37,53 @@ namespace Shop.Data
                 throw ex;
             }
         }
+
+        /// <summary>
+        /// 获取单条记录
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Customers GetById(string id)
+        {
+            using (ISession session = NHibernateHelper.SessionFactory.OpenSession())
+            {
+                Customers customers = session.Get<Customers>(id);
+                return customers;
+            }
+        }
+
+        #region 增删改
+
+        public bool Insert(Customers customers)
+        {
+            using (var session = NHibernateHelper.SessionFactory.OpenSession())
+            {
+                var identifier = session.Save(customers);
+                session.Flush();
+                return string.IsNullOrEmpty(identifier.ToString());
+            }
+        }
+
+        public void Update(Customers customers)
+        {
+            using (var session = NHibernateHelper.SessionFactory.OpenSession())
+            {
+                session.SaveOrUpdate(customers);
+                session.Flush();
+            }
+        }
+
+        public void Delete(string id)
+        {
+            using (var session = NHibernateHelper.SessionFactory.OpenSession())
+            {
+                var customer = session.Get<Customers>(id);
+                session.Delete(customer);
+                session.Flush();
+            }
+        }
+
+        #endregion
+
     }
 }

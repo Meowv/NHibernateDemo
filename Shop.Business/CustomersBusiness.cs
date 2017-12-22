@@ -23,5 +23,43 @@ namespace Shop.Business
         {
             return customersData.GetCustomerList(where);
         }
+
+        /// <summary>
+        /// 获取单条记录
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Customers GetById(string id)
+        {
+            return customersData.GetById(id);
+        }
+
+        /// <summary>
+        /// 增
+        /// </summary>
+        /// <param name="customer"></param>
+        /// <returns></returns>
+        public bool Insert(Customers customer)
+        {
+            return customersData.Insert(customer);
+        }
+
+        /// <summary>
+        /// 删
+        /// </summary>
+        /// <param name="customer"></param>
+        public void Update(Customers customer)
+        {
+            customersData.Update(customer);
+        }
+
+        /// <summary>
+        /// 改
+        /// </summary>
+        /// <param name="id"></param>
+        public void Delete(string id)
+        {
+            customersData.Delete(id);
+        }
     }
 }
