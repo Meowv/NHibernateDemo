@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- This is the System.Data.dll provider for SQL Server -->
+<hibernate-configuration  xmlns="urn:nhibernate-configuration-2.2" >
+  <session-factory name="NHibernate.Test">
+    <!--定制数据库IDriver的类型.-->
+    <property name="connection.driver_class">NHibernate.Driver.SqlClientDriver</property>
+    <!--连接字符串-->
+    <property name="connection.connection_string">
+      Server=.;database=Northwind;uid=sa;pwd=123456
+    </property>
+    <!--NHibernate方言（Dialect）的类名 - 可以让NHibernate使用某些特定的数据库平台的特性-->
+    <property name="dialect">NHibernate.Dialect.MsSql2008Dialect</property>
+    <!--在控制台显示SQL-->
+    <property name="show_sql">true</property>
+    <!--指定映射文档中所在程序集-->
+    <mapping  assembly="Shop.Domain"/>
+  </session-factory>
+</hibernate-configuration>
